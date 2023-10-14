@@ -4,21 +4,20 @@
 
 package frc.robot.commands;
 
-import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.PnuematicSubsystem;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /** An example command that uses an example subsystem. */
-public class ExampleCommand extends CommandBase {
-  @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  private final ExampleSubsystem m_subsystem;
+public class AcuatePiston extends CommandBase {
+  private final PnuematicSubsystem m_PnuematicSubsystem;
 
   /**
-   * Creates a new ExampleCommand.
+   * Creates a new Command.
    *
    * @param subsystem The subsystem used by this command.
    */
-  public ExampleCommand(ExampleSubsystem subsystem) {
-    m_subsystem = subsystem;
+  public AcuatePiston(PnuematicSubsystem subsystem) {
+    m_PnuematicSubsystem = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(subsystem);
   }
@@ -29,7 +28,14 @@ public class ExampleCommand extends CommandBase {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+    if (m_PnuematicSubsystem.isPistonDeployed()) {
+      m_PnuematicSubsystem.deployPiston();
+    }
+    else {
+      m_PnuematicSubsystem.undeployPiston();
+    }
+  }
 
   // Called once the command ends or is interrupted.
   @Override
@@ -38,6 +44,6 @@ public class ExampleCommand extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return true;
   }
 }

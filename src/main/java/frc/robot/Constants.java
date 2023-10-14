@@ -16,4 +16,10 @@ public final class Constants {
   public static class OperatorConstants {
     public static final int kDriverControllerPort = 0;
   }
+
+  public static class PnuematicConstants {
+    public static final int PPNEUMATIC_HUB_ID = 1;
+    public static final int SOL_FWD = 0;
+    public static final int SOL_RVS = 1;
+  }
 }
