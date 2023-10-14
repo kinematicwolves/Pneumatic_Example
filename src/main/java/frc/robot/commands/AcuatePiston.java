@@ -30,10 +30,10 @@ public class AcuatePiston extends CommandBase {
   @Override
   public void execute() {
     if (m_PnuematicSubsystem.isPistonDeployed()) {
-      m_PnuematicSubsystem.deployPiston();
+      m_PnuematicSubsystem.undeployPiston();
     }
     else {
-      m_PnuematicSubsystem.undeployPiston();
+      m_PnuematicSubsystem.deployPiston();
     }
   }
 
